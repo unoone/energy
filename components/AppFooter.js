@@ -1,21 +1,21 @@
 import React from 'react';
 import {Footer, FooterTab, Button, Text} from 'native-base';
-import {MODES} from "../constants";
 
-const AppFooter = ({mode = MODES.ARTICLES, setMode = () => {}}) => (
+
+const AppFooter = (props) => (
 	<Footer>
 		<FooterTab>
 			<Button
-				active={mode === MODES.ARTICLES}
+				active={props.currentState === "objects"}
 				onPress={
-                                  () => setMode(MODES.ARTICLES)}>
-				<Text></Text>
+                                  () => props.setMode("objects")}>
+				<Text>Объекты</Text>
 			</Button>
 			<Button
-				active={mode === MODES.PODCAST}
+				active={props.currentState === "map"}
 				onPress={
-                                  () => setMode(MODES.PODCAST)}>
-				<Text></Text>
+                                  () => props.setMode("map")}>
+				<Text>Карта</Text>
 			</Button>
 		</FooterTab>
 	</Footer>

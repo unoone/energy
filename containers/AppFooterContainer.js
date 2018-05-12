@@ -1,21 +1,25 @@
 import React from 'react';
 import AppFooter from '../components/AppFooter.js';
 import {connect} from 'react-redux';
-import {setMode} from '../actions/index';
 
+import * as actions from "../ducks/actions";
 const mapStateToProps = (state) => ({
-	mode: state.mode
+	currentState: state.currentState
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	setMode(mode) {
-		dispatch(setMode(mode));
-	}
-});
 
-const AppFooterContainer = ({mode, setMode}) => (
-	<AppFooter mode={mode} setMode={setMode} />
-);
+const mapDispatchToProps = {
+	setMode: actions.setMode,
+  };
+  
+  class AppFooterContainer extends React.Component {
+	 render(){
+		 return(
+
+			 <AppFooter currentState={this.props.currentState} setMode={this.props.setMode} />
+		 )
+	 }
+}
 
 export default connect(
 	mapStateToProps,

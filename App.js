@@ -39,53 +39,24 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right, ListItem,  Footer, FooterTab, Button,} from 'native-base';
 import {List} from "./components/List"
+import AppContainer from './containers/AppContainer.js';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import { reducer } from "./ducks/Reducer";
+
+const initialState = {
+	currentState: "objects"
+};
+const store = createStore(reducer, initialState);
+
 export default class CardListExample extends Component {
   render() {
     //var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
-    var items = [{name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-    {name:"Новосибирск,Орджаникидзе,32", state:"Норм"},
-  ];
-    
+    console.log("рповрпоарвоправопраоврполавррол")
     return (
-      <Container>
-        <Header />
-        <Content>
-          {items.map((element,index) => {
-         return(
-         <Card key={index}>
-            <CardItem >
-              <Content>
-          <List object = {element}/>
-        </Content>
-             </CardItem>
-           </Card>
-           )
-      })}
-        </Content>
-
-        {/* <Footer>
-          <FooterTab>
-            <Button active = {}>
-             
-              <Text>Объекты</Text>
-            </Button>
-            <Button >
-             
-              <Text>Карта</Text>
-            </Button>
-           
-          </FooterTab>
-        </Footer> */}
-      </Container>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
     );
   }
 }

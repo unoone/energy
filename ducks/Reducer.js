@@ -1,12 +1,12 @@
-import * as types from "./ActionTypes";
+import * as types from "./actionTypes";
 const initialState = {
 	currentState: "objects"
   };
   
 
-export default (state = initialState, action) => {
+export const reducer =  (state = initialState, action) => {
 	switch (action.type) {
-		case SET_MODE: {
+		case types.SET_MODE: {
 			return {...state,
 				currentState: action.mode
 			};

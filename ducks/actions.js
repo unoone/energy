@@ -1,8 +1,8 @@
-import * as types from "./ActionTypes";
+import * as types from "./actionTypes";
 
 
 export const setMode = mode => ({
-	type: SET_MODE,
+	type: types.SET_MODE,
 	mode
   });
   
